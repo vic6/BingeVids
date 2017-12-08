@@ -1,12 +1,31 @@
-import React from "react";
+import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import SearchBar from './components/SearchBar';
+import YTSearch from "youtube-api-search";
+import SearchBar from "./components/SearchBar";
 
-const API_KEY = 'AIzaSyCfKadtDHqAq6nHkoodEqwancOqNqPEhzM';
+const API_KEY = "AIzaSyCfKadtDHqAq6nHkoodEqwancOqNqPEhzM";
 
-const App = () =>
-<div>hello dude
-  <SearchBar />
-</div>;
+class App extends Component {
+  state = {
+    videos: [],
+  };
+
+  componentDidMount() {
+    YTSearch({ key: API_KEY, term: "ice cream" }, data => {
+      this.setState({videos: data})
+    });
+  }
+
+  render() {
+    console.log(this.state.videos)
+    return (
+      <div>
+        hello dude
+        <SearchBar />
+        {API_KEY}
+      </div>
+    );
+  }
+}
 
 ReactDOM.render(<App />, document.getElementById("app"));
