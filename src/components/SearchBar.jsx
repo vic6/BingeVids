@@ -13,7 +13,7 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <div>
+      <div className="search-bar">
         <input
           onChange={this.handleSearchTermChange}
           value={this.state.searchTerm}
