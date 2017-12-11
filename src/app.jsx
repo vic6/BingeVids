@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import ReactDOM from "react-dom";
-import YTSearch from "youtube-api-search";
-import SearchBar from "./components/SearchBar";
-import VideoList from "./components/VideoList";
-import VideoDetail from "./components/VideoDetail";
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import YTSearch from 'youtube-api-search';
+import SearchBar from './components/SearchBar';
+import VideoList from './components/VideoList';
+import VideoDetail from './components/VideoDetail';
 
-const API_KEY = "AIzaSyCfKadtDHqAq6nHkoodEqwancOqNqPEhzM";
+const API_KEY = 'AIzaSyCfKadtDHqAq6nHkoodEqwancOqNqPEhzM';
 
 class App extends Component {
   state = {
@@ -14,12 +14,7 @@ class App extends Component {
   };
 
   componentDidMount() {
-    YTSearch({ key: API_KEY, term: "ice cream" }, data => {
-      this.setState({
-        videos: data,
-        selectedVideo: data[0],
-      });
-    });
+    this.updateSearchTerm('waka flocka')
   }
 
   onVideoSelect = video => {
@@ -28,10 +23,19 @@ class App extends Component {
     });
   };
 
+  updateSearchTerm = (searchTerm) => {
+    YTSearch({ key: API_KEY, term: searchTerm }, data => {
+      this.setState({
+        videos: data,
+        selectedVideo: data[0],
+      });
+    });
+  }
+
   render() {
     return (
       <div>
-        <SearchBar />
+        <SearchBar onSearchTermChange={this.updateSearchTerm} />
         <VideoDetail video={this.state.selectedVideo} />
         <VideoList
           videos={this.state.videos}
@@ -42,4 +46,4 @@ class App extends Component {
   }
 }
 
-ReactDOM.render(<App />, document.querySelector(".container"));
+ReactDOM.render(<App />, document.querySelector('.container'));

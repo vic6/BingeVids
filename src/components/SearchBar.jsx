@@ -1,14 +1,16 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 class SearchBar extends Component {
   state = {
-    searchTerm: "",
+    searchTerm: '',
   };
 
-  handleSearchTermChange = (event) => {
+  handleSearchTermChange = event => {
     this.setState({
       searchTerm: event.target.value,
     });
+    this.props.onSearchTermChange(this.state.searchTerm)
+    console.log(this.state.searchTerm)
   };
 
   render() {
@@ -18,8 +20,6 @@ class SearchBar extends Component {
           onChange={this.handleSearchTermChange}
           value={this.state.searchTerm}
         />
-
-        <p>{this.state.searchTerm}</p>
       </div>
     );
   }
