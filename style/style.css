@@ -4,7 +4,11 @@
 }
 
 .search-bar input {
-  width: 75%
+  width: 65%
+}
+
+.search-bar img {
+  padding-right: 20px;
 }
 
 .video-item img {
