@@ -15,7 +15,7 @@ class App extends Component {
   };
 
   componentDidMount() {
-    this.updateSearchTerm('waka flocka')
+    this.updateSearchTerm('big shaq')
   }
 
   onVideoSelect = video => {
