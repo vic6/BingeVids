@@ -17,7 +17,7 @@ class SearchBar extends Component {
     return (
       <div className="search-bar">
         <a href='/'>
-          <img src="./public/logo.png" alt='logo' height='45px' />
+          <img src="./public/images/logo.png" alt='logo' height='50px' />
         </a>
         <input
           onChange={this.handleSearchTermChange}
