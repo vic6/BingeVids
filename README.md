@@ -3,9 +3,9 @@
 
 BingeVids uses the YouTube api to instantly load videos based on your search input. This is the perfect app to use in between study sessions or to take your mind of that fast approaching deadline.
 
-![](./public/images/quickmafs.png)
+![](./public/images/quickmaths.png)
 
-![](./public/images/ididnot.png)
+![](./public/images/ohhimark.png)
 
 ![](./public/images/pootie.png)
 
