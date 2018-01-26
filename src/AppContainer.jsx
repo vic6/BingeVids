@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import YTSearch from 'youtube-api-search';
 import _ from 'lodash';
-import SearchBar from './components/SearchBar';
-import VideoList from './components/VideoList';
-import VideoDetail from './components/VideoDetail';
+import ReactDOM from 'react-dom';
+import App from './components/App';
 
 const API_KEY = 'AIzaSyCfKadtDHqAq6nHkoodEqwancOqNqPEhzM';
 
-class App extends Component {
+class AppContainer extends Component {
   state = {
     videos: [],
     selectedVideo: null,
@@ -35,18 +33,15 @@ class App extends Component {
 
   render() {
     const videoSearch = _.debounce((term) => {this.updateSearchTerm(term)}, 300)
-
     return (
-      <div>
-        <SearchBar onSearchTermChange={videoSearch} />
-        <VideoDetail video={this.state.selectedVideo} />
-        <VideoList
-          videos={this.state.videos}
-          selectedVideo={this.onVideoSelect}
-        />
-      </div>
+      <App
+        selectedVideo={this.state.selectedVideo}
+        videos={this.state.videos}
+        onVideoSelect={this.onVideoSelect}
+        videoSearch={videoSearch}
+      />
     );
   }
 }
 
-// ReactDOM.render(<App />, document.querySelector('.container'));
+ReactDOM.render(<AppContainer />, document.querySelector('.container'));
